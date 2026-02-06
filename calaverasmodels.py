@@ -1,3 +1,9 @@
+import uuid  # standard Python library
+
+
+
+
+
 class Character:
     def __init__(
         self,
@@ -7,7 +13,8 @@ class Character:
         inventory=None,
         deaths=0,
         curses=None,
-        afflictions=None
+        afflictions=None,
+        notes=""
     ):
         self.name = name
         self.heritage = heritage
@@ -18,6 +25,8 @@ class Character:
         self.curses = curses if curses is not None else []
         self.afflictions = afflictions if afflictions is not None else []
 
+        self.notes = notes
+
     def to_dict(self):
         return {
             "name": self.name,
@@ -26,7 +35,8 @@ class Character:
             "deaths": self.deaths,
             "curses": self.curses,
             "afflictions": self.afflictions,
-            "inventory": [item.to_dict() for item in self.inventory]
+            "inventory": [item.to_dict() for item in self.inventory],
+            "notes": self.notes
         }
 
     # --- Admin Status Methods ---
@@ -64,24 +74,34 @@ class Character:
             inventory=inventory,
             deaths=data.get("deaths", 0),
             curses=data.get("curses", []),
-            afflictions=data.get("afflictions", [])
+            afflictions=data.get("afflictions", []),
+            notes=data.get("notes", "")
         )
 
 
 class Item:
-    def __init__(self, name, quantity):
+    def __init__(self, name, quantity, is_custom=False, unique_id=None):
         self.name = name
         self.quantity = quantity
+        self.is_custom = is_custom
+        self.unique_id = unique_id or (str(uuid.uuid4()) if is_custom else None)
 
     def to_dict(self):
         return {
             "name": self.name,
-            "quantity": self.quantity
+            "quantity": self.quantity,
+            "is_custom": self.is_custom,
+            "unique_id": self.unique_id
+
         }
+
 
     @staticmethod
     def from_dict(data):
         return Item(
-            data["name"],
-            data["quantity"]
-        )
+            name=data["name"],
+            quantity=data["quantity"],
+            is_custom=data.get("is_custom", False),
+            unique_id=data.get("unique_id")
+    )
+
