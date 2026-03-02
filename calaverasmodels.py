@@ -1,7 +1,5 @@
 import uuid  # standard Python library
-
-
-
+from calaverasdata import CURRENCY_NAME
 
 
 class Character:
@@ -39,6 +37,12 @@ class Character:
             "notes": self.notes
         }
 
+    def get_currency(self):
+        for item in self.inventory:
+            if item.name == CURRENCY_NAME:
+                return item
+        return None
+    
     # --- Admin Status Methods ---
 
     def add_curse(self, curse_name):
@@ -64,7 +68,7 @@ class Character:
     def from_dict(data):
         inventory = [
             Item.from_dict(item_data)
-            for item_data in data.get("inventory", [])
+                for item_data in data.get("inventory", [])
         ]
 
         return Character(
@@ -84,7 +88,14 @@ class Item:
         self.name = name
         self.quantity = quantity
         self.is_custom = is_custom
-        self.unique_id = unique_id or (str(uuid.uuid4()) if is_custom else None)
+        self.unique_id = unique_id or str(uuid.uuid4())
+
+        if name == CURRENCY_NAME:
+            self.quantity = float(quantity)
+        else:
+            if not isinstance(quantity, int):
+                raise ValueError("Standard item quantities must be integers.")
+            self.quantity = quantity
 
     def to_dict(self):
         return {
@@ -92,9 +103,7 @@ class Item:
             "quantity": self.quantity,
             "is_custom": self.is_custom,
             "unique_id": self.unique_id
-
         }
-
 
     @staticmethod
     def from_dict(data):
@@ -103,5 +112,5 @@ class Item:
             quantity=data["quantity"],
             is_custom=data.get("is_custom", False),
             unique_id=data.get("unique_id")
-    )
+        )
 

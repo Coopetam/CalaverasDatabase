@@ -1,0 +1,46 @@
+.character-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #f4ecd8;
+  border: 2px solid #5a3e2b;
+  font-family: Georgia, serif;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #5a3e2b;
+  padding-bottom: 10px;
+}
+
+.logo-small {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.print-link {
+  text-align: right;
+  margin: 15px 0;
+}
+
+.print-link a {
+  text-decoration: none;
+  border: 1px solid #5a3e2b;
+  padding: 6px 12px;
+  color: #5a3e2b;
+}
+
+.print-link a:hover {
+  background-color: #5a3e2b;
+  color: white;
+}
+
+section {
+  margin-top: 25px;
+}
+
+h3 {
+  border-bottom: 1px solid #5a3e2b;
+  padding-bottom: 4px;
+}

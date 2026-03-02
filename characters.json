@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Testy Calaveras",
+    "heritage": "Unseen",
+    "profession": "Performer",
+    "deaths": 0,
+    "curses": [],
+    "afflictions": [],
+    "inventory": [
+      {
+        "name": "Little Black Book",
+        "quantity": 1,
+        "is_custom": false,
+        "unique_id": null
+      },
+      {
+        "name": "Performer Instrument",
+        "quantity": 1,
+        "is_custom": false,
+        "unique_id": null
+      },
+      {
+        "name": "Cutpurse Knife",
+        "quantity": 1,
+        "is_custom": false,
+        "unique_id": null
+      }
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ character.name }} | Calaveras</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="character-page">
+
+    <!-- Header -->
+    <div class="detail-header">
+        <img src="{{ url_for('static', filename='images/calaveras_logo.png') }}"
+             class="logo-small">
+
+        <div class="header-text">
+            <h1>{{ character.name }}</h1>
+            <p>{{ character.profession.name }} | {{ character.heritage.name }}</p>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="print-link">
+        <a href="{{ url_for('print_character', id=character.id) }}" target="_blank">
+            Print This Record
+        </a>
+    </div>
+
+    <!-- Identity Section -->
+    <section>
+        <h3>Identity</h3>
+        <p><strong>Character Name:</strong> {{ character.name }}</p>
+        <p><strong>Profession:</strong> {{ character.profession.name }}</p>
+        <p><strong>Heritage:</strong> {{ character.heritage.name }}</p>
+        <p><strong>Player:</strong> {{ character.user.username }}</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section>
+        <h3>Attributes</h3>
+        <ul>
+            <li>Strength: {{ character.strength }}</li>
+            <li>Agility: {{ character.agility }}</li>
+            <li>Resolve: {{ character.resolve }}</li>
+        </ul>
+    </section>
+
+    <!-- Inventory -->
+    <section>
+        <h3>Inventory</h3>
+        <ul>
+            {% for item in character.inventory %}
+            <li>{{ item.name }} — {{ item.description }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Abilities -->
+    <section>
+        <h3>Abilities</h3>
+        <ul>
+            {% for ability in character.abilities %}
+            <li>{{ ability.name }} — {{ ability.description }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Notes -->
+    <section>
+        <h3>Backstory / Notes</h3>
+        <p>{{ character.notes }}</p>
+    </section>
+
+</div>
+
+</body>
+</html>

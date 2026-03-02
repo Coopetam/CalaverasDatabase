@@ -3,6 +3,7 @@ heritages = ["Homesteader", "Trailfolk", "Industrialist", "Militant", "Urbanite"
 professions = ["Trapper", "Forager", "Stoneworker", "Carpenter", "Smelter", "Engineer", "Provisioner", "Trader", "Surgeon", "Physician", "Performer", "Artisan", "None"]
 
 inventory_items = [
+    "Dollars",
     "Animal Carcass (S)",
     "Animal Carcass (M)",
     "Animal Carcass (L)",
@@ -65,7 +66,7 @@ inventory_items = [
     "Alchemical Tools",
     "Tome of Symbology",
     "Simple Bow",
-    "Arrows"
+    "Arrows",
     "Ore / Metal Ingot",
     "Small Parts Kit",
     "Box of Bullets",
@@ -77,6 +78,8 @@ inventory_items = [
     "Smoked / Salted Carcass",
     "Fresh Game Meat"
 ]
+
+CURRENCY_NAME = "Dollars"
 
 profession_starting_items = {
     "Trapper": ["Large Game Trap", "Skinning Knife", "Carcass Bag"],
